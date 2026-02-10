@@ -2,4 +2,4 @@
 require "pagy/backend"
 require "pagy/frontend"
 
-Pagy::DEFAULT = Pagy::DEFAULT.merge(items: 6)
+Pagy::DEFAULT[:items] = 6

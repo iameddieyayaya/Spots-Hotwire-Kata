@@ -21,7 +21,7 @@ Make Spots CRUD Hotwire-first using Turbo Frames + Turbo Streams. Validation err
 
 ## Tests to pass
 
-- `spec/system/spot_crud_spec.rb`
+- `bundle exec rspec spec/system/spot_crud_spec.rb`
 
 ## Acceptance criteria
 
