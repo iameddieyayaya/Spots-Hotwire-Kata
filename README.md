@@ -2,6 +2,8 @@
 
 Spots is a lightweight Rails + Hotwire practice app designed for interview prep. It focuses on Turbo Frames/Streams, small Stimulus interactions, and idiomatic Rails patterns with a clean Tailwind UI.
 
+Repo created by Codex; was prompted with `init.text` via terminal.
+
 ## Purpose
 
 - Practice Hotwire-first CRUD flows with inline validation errors.

@@ -1,0 +1,72 @@
+You are Codex acting as a senior Rails engineer + interview coach.
+
+Context:
+- I just created a fresh Rails project (latest Rails) with Tailwind.
+- I want this repo to become a practice kata for technical interviews focused on Rails + Hotwire.
+
+Goals:
+1) Add “standard production-ready boilerplate”:
+   - authentication (email/password) with a simple User model
+   - authorization baseline (even if minimal)
+   - request specs / system specs setup
+   - linting/formatting (rubocop optional if you think it's valuable)
+   - seeds, and sample data to work with
+   - CI config (GitHub Actions) that runs tests
+   - a nice basic UI layout with Tailwind
+
+2) Create a practice feature set (tasks) that forces me to practice Rails + Hotwire:
+   - Use Turbo Frames and Turbo Streams for CRUD updates
+   - Use Stimulus for small UI interactions (e.g. show/hide, reset form, loading states)
+   - Include validation errors that render inline inside Turbo Frames
+   - Include a “comments” style nested resource example
+   - Include a “like/upvote” interaction that uses Turbo Streams
+
+3) Include a pagination section:
+   - Use a popular pagination gem (Kaminari or Pagy; choose one and justify in code comments)
+   - Pagination must work with Turbo Frames (clicking next page updates just the list section)
+   - Include search + filter (query param) that works with pagination
+
+4) For EACH task you assign me:
+   - Create a failing test (RSpec preferred; system specs with Capybara for Turbo interactions)
+   - Add a short “Task instructions” markdown file in /docs (or /PRACTICE.md) describing:
+     - what I need to implement
+     - what files to look at
+     - which test(s) should pass when done
+   - Make sure the tests fail initially but are achievable by implementing the described work.
+
+Project Feature Theme:
+- Build a small “Spots” app:
+  - Spot: name, description, city, state, status
+  - Comment: belongs_to Spot + User
+  - Like: belongs_to Spot + User (unique per user)
+  - Optional: Tagging or Categories for filtering
+
+Deliverables:
+- Make all required Rails generators/migrations/models/controllers/views/routes.
+- Make Hotwire-first UI (no React).
+- Create /PRACTICE.md with a checklist of tasks in order (Task 1, Task 2, …).
+- Each task should have:
+  - failing test(s)
+  - brief instructions
+  - acceptance criteria
+
+Constraints / Preferences:
+- Keep code idiomatic Rails.
+- Use Turbo Frames/Streams as default (not full-page reload).
+- Avoid file-based caching; if you add caching, use Redis and explain briefly.
+- Keep everything local dev friendly.
+- Don’t overbuild; this is for interview practice and clarity.
+
+What I want you to do now:
+A) Inspect the existing project structure and Gemfile.
+B) Implement the boilerplate + initial feature scaffolding.
+C) Add the tasks + failing tests + docs.
+D) Output the exact commands I should run:
+   - to install deps
+   - to setup database
+   - to run the test suite
+   - and a recommended order to complete tasks.
+
+Make sure the repo boots and tests run.
+
+Important: do NOT implement the task features themselves fully. Only implement enough scaffolding to run the app, then leave tasks incomplete so tests fail until I implement them.
