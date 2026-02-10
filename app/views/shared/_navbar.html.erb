@@ -1,0 +1,22 @@
+<header class="border-b border-slate-200 bg-white/80 backdrop-blur">
+  <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
+    <div class="flex items-center gap-3">
+      <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-900 text-white font-display text-lg">S</div>
+      <div>
+        <p class="font-display text-lg">Spots</p>
+        <p class="text-xs text-slate-500">Hotwire interview kata</p>
+      </div>
+    </div>
+
+    <nav class="flex items-center gap-4 text-sm">
+      <%= link_to "Explore", spots_path, class: "text-slate-600 hover:text-slate-900" %>
+      <% if current_user %>
+        <span class="text-slate-500">Hi, <%= current_user.email %></span>
+        <%= button_to "Log out", session_path, method: :delete, class: "btn-secondary" %>
+      <% else %>
+        <%= link_to "Sign up", new_registration_path, class: "btn-secondary" %>
+        <%= link_to "Log in", new_session_path, class: "btn-primary" %>
+      <% end %>
+    </nav>
+  </div>
+</header>

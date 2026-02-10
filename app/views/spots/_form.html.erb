@@ -1,0 +1,25 @@
+<%= form_with model: spot, class: "space-y-4" do |form| %>
+  <div>
+    <%= form.label :name, class: "label" %>
+    <%= form.text_field :name, class: "input" %>
+  </div>
+  <div>
+    <%= form.label :description, class: "label" %>
+    <%= form.text_area :description, rows: 4, class: "input" %>
+  </div>
+  <div class="grid gap-4 md:grid-cols-3">
+    <div>
+      <%= form.label :city, class: "label" %>
+      <%= form.text_field :city, class: "input" %>
+    </div>
+    <div>
+      <%= form.label :state, class: "label" %>
+      <%= form.text_field :state, class: "input" %>
+    </div>
+    <div>
+      <%= form.label :status, class: "label" %>
+      <%= form.select :status, Spot::STATUSES, {}, class: "input" %>
+    </div>
+  </div>
+  <%= form.submit class: "btn-primary" %>
+<% end %>

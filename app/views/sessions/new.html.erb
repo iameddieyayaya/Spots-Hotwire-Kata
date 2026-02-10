@@ -1,0 +1,18 @@
+<div class="mx-auto max-w-lg">
+  <div class="card">
+    <h1 class="font-display text-2xl">Welcome back</h1>
+    <p class="mt-1 text-sm text-slate-500">Log in to continue building out your Spots experience.</p>
+
+    <%= form_with url: session_path, class: "mt-6 space-y-4" do |form| %>
+      <div>
+        <%= form.label :email, class: "label" %>
+        <%= form.email_field :email, class: "input" %>
+      </div>
+      <div>
+        <%= form.label :password, class: "label" %>
+        <%= form.password_field :password, class: "input" %>
+      </div>
+      <%= form.submit "Log in", class: "btn-primary w-full" %>
+    <% end %>
+  </div>
+</div>
