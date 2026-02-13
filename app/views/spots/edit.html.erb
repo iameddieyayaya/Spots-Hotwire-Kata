@@ -2,8 +2,13 @@
   <div class="card">
     <h1 class="font-display text-2xl">Edit spot</h1>
     <p class="mt-1 text-sm text-slate-500">Update the details for this spot.</p>
+    <div id="spot_result" class="mt-4">
+      <%= render "spot_result", spot: @spot %>
+    </div>
     <div class="mt-6">
-      <%= render "form", spot: @spot %>
+    <%= turbo_frame_tag "spot_form" do %>
+        <%= render "form", spot: @spot %>
+    <% end %>
     </div>
   </div>
 </div>

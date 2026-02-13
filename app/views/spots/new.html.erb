@@ -2,8 +2,15 @@
   <div class="card">
     <h1 class="font-display text-2xl">New spot</h1>
     <p class="mt-1 text-sm text-slate-500">Add a new spot to the collection.</p>
+    <div id="spot_result" class="mt-4">
+      <% if @created_spot %>
+        <%= render "spot_result", spot: @created_spot %>
+      <% end %>
+    </div>
     <div class="mt-6">
-      <%= render "form", spot: @spot %>
+      <%= turbo_frame_tag "spot_form" do %>
+        <%= render "form", spot: @spot %>
+      <% end %>
     </div>
   </div>
 </div>

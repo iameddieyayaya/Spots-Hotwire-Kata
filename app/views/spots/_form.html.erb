@@ -1,25 +1,35 @@
-<%= form_with model: spot, class: "space-y-4" do |form| %>
-  <div>
-    <%= form.label :name, class: "label" %>
-    <%= form.text_field :name, class: "input" %>
-  </div>
-  <div>
-    <%= form.label :description, class: "label" %>
-    <%= form.text_area :description, rows: 4, class: "input" %>
-  </div>
-  <div class="grid gap-4 md:grid-cols-3">
+  <%= form_with model: spot, class: "space-y-4" do |form| %>
+      <% if spot.errors.any? %>
+        <div class="mb-4 rounded-md border border-red-200 bg-red-50 px-4 py-3 text-
+      sm text-red-700">
+          <ul class="list-disc pl-5">
+            <% spot.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
     <div>
-      <%= form.label :city, class: "label" %>
-      <%= form.text_field :city, class: "input" %>
+      <%= form.label :name, class: "label" %>
+      <%= form.text_field :name, class: "input" %>
     </div>
     <div>
-      <%= form.label :state, class: "label" %>
-      <%= form.text_field :state, class: "input" %>
+      <%= form.label :description, class: "label" %>
+      <%= form.text_area :description, rows: 4, class: "input" %>
     </div>
-    <div>
-      <%= form.label :status, class: "label" %>
-      <%= form.select :status, Spot::STATUSES, {}, class: "input" %>
+    <div class="grid gap-4 md:grid-cols-3">
+      <div>
+        <%= form.label :city, class: "label" %>
+        <%= form.text_field :city, class: "input" %>
+      </div>
+      <div>
+        <%= form.label :state, class: "label" %>
+        <%= form.text_field :state, class: "input" %>
+      </div>
+      <div>
+        <%= form.label :status, class: "label" %>
+        <%= form.select :status, Spot::STATUSES, {}, class: "input" %>
+      </div>
     </div>
-  </div>
-  <%= form.submit class: "btn-primary" %>
-<% end %>
+    <%= form.submit class: "btn-primary" %>
+  <% end %>

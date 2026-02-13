@@ -22,10 +22,27 @@ class SpotsController < ApplicationController
     @spot = current_user.spots.new(spot_params)
     authorize @spot
 
-    if @spot.save
-      redirect_to @spot, notice: "Spot created."
-    else
-      render :new, status: :unprocessable_entity
+    respond_to do |format|
+      if @spot.save
+        created_spot = @spot
+        @spot = Spot.new
+        format.turbo_stream do
+          render turbo_stream: [
+            turbo_stream.update("spot_form", partial: "spots/form", locals: { spot: @spot }),
+            turbo_stream.update("spot_result", partial: "spots/spot_result", locals: { spot: created_spot })
+          ]
+        end
+        format.html do
+          @created_spot = created_spot
+          render :new, status: :ok
+        end
+      else
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.update("spot_form", partial: "spots/form", locals: { spot: @spot })
+        end
+
+        format.html { render "spots/new", status: :unprocessable_entity }
+      end
     end
   end
 
@@ -36,10 +53,27 @@ class SpotsController < ApplicationController
   def update
     authorize @spot
 
-    if @spot.update(spot_params)
-      redirect_to @spot, notice: "Spot updated."
-    else
-      render :edit, status: :unprocessable_entity
+    respond_to do |format|
+      if @spot.update(spot_params)
+        format.turbo_stream do
+          render turbo_stream: [
+            turbo_stream.update("spot_form", partial: "spots/form", locals: { spot: @spot }),
+            turbo_stream.update("spot_result", partial: "spots/spot_result", locals: { spot: @spot })
+          ]
+        end
+        format.html { redirect_to @spot, notice: "Spot updated." }
+
+      else
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.update(
+            "spot_form",
+            partial: "spots/form",
+            locals: { spot: @spot }
+          )
+        end
+
+        format.html { render :edit, status: :unprocessable_entity }
+      end
     end
   end
 
